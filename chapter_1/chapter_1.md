@@ -12,18 +12,37 @@
 
 ## Notation
 
-If  $v$ = d
+- $n$ is the number of observations
 
+- $p$ number of variables (features+labels)
 
-
-
+if $i=1,2,\dots,n$ and $j =1,2,\dots,n$ , $x_{ij}$ represents the value of the $j^{th}$ observation for the $i^{th}$ variable. Hence
 $$
-
+\bold{X}= 
+\begin{pmatrix}
+x_{11} & x_{12} & \dots & x_{1p}\\
+x_{21} & x_{22} & \dots & x_{2p}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{n1} & x_{n2} & \dots & x_{np}\\
+\end{pmatrix}
 $$
-
-
-
-
+$\bold{X}$ can be written as
+$$
+\bold{X} =
+\begin{pmatrix}
+x_1 & x_2 & \dots & x_p
+\end{pmatrix}
+$$
+or
+$$
+\bold{X} =
+\begin{pmatrix}
+x_1^T \\
+x_2^T \\
+\vdots\\
+x_n^T
+\end{pmatrix}
+$$
 
 
 
