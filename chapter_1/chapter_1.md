@@ -45,5 +45,41 @@ x_n^T
 $$
 
 
+# Chapter 2
+
+
+
+## Chapter2.1 Introduction to Regression Models
+
+Consider an example
+
+$sales=f(Tv, radio, newspaper)$
+
+where sales is a function of newspaper. tv and radio ads
+
+- sales is a **response** or **target**, $Y$
+- tv, radio and newspaper are **features**, **inputs** or **predictors** $X_1, X_2, X_3$ respectively
+
+$$
+X =
+\begin{pmatrix}
+X_1\\
+X_2\\
+X_3
+\end{pmatrix}
+$$
+
+$$
+Y=f(X) + \epsilon
+$$
+
+where $\epsilon$ is the measurement error
+
+with $f(X)$ we can
+
+- make predictions
+- understand which components are important
+- might understand how each $X_j \in X$ affects $Y$
+
 
 
