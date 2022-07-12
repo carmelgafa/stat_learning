@@ -81,5 +81,7 @@ with $f(X)$ we can
 - understand which components are important
 - might understand how each $X_j \in X$ affects $Y$
 
+finding the ideal $f(x)$ say at $x=4$
+
 
 
