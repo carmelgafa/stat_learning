@@ -1,15 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+error_threshold = 2
 
-x = np.arange(0,10.5, 0.5)
+x_points = []
+y_points = []
 
+for x in np.arange(0,10.2, 0.2):
 
-print(x)
+    # get a random number between 1 and 5
+    number_of_y_points = np.random.randint(1, 5)
 
-y = -(np.square(x) - (10*x))
+    for y_point in np.arange(0, number_of_y_points):
+        
+        # get a random number between 0 and 0.2
+        error = np.random.uniform(-error_threshold, error_threshold)
+        y = -(np.square(x) - (10*x)) + error
 
-print(y)
+        x_points.append(x)
+        y_points.append(y)
 
-plt.plot(x,y)
+plt.scatter(x_points, y_points)
 plt.show()
