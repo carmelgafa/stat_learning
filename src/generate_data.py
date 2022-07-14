@@ -65,7 +65,3 @@ for x in np.arange(0,10+resolution, resolution):
 neighborhood_estimate.plot(x='x', y='y', kind='line', ax=ax, color='green', label='neighborhood estimate')
 
 plt.show()
-
-
-
-
