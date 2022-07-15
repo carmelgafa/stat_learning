@@ -81,7 +81,51 @@ with $f(X)$ we can
 - understand which components are important
 - might understand how each $X_j \in X$ affects $Y$
 
-finding the ideal $f(x)$ say at $x=4$
+finding the ideal $f(x)$ say at $x=4$ a good value would be 
 
+$$
+f(4)= E(Y|X=4)
+$$
 
+that is the expected value is the average of the values of $Y$ for all the observations with $X=4$.
 
+So the **regression** problem is to find the best $f(x)$ for a given $x$
+
+$$
+f(x) = E(Y|X=x)
+$$
+
+for a vector $X$
+
+$$
+f(x) = f(x_1, x_2, \dots, x_p) = E(Y|X_1=x_1, X_2=x_2, \dots, X_p=x_p)
+$$
+
+where $E(Y|X=x)$ is the expected value of $Y$ for all the observations with $X=x$, that minimizes the squared error, therefore
+
+$f(x) = E(Y|X=x)$ is the function that minimizes
+
+$$
+E[(Y-g(X))^2 | X=x], \forall g \forall x
+$$
+
+the irreducible error is the error that cannot be reduced to a smaller error
+
+$$
+\epsilon = Y - f(X)
+$$
+
+hence for any estimate
+
+$$
+E[(Y-\hat{f}(X))^2 | X=x] = [f(X)- \hat{f}(X)]^2 + Var(\epsilon)
+$$
+
+where
+
+- $Var(\epsilon)$ is the reducible error
+- $[f(X)- \hat{f}(X)]^2$ is the irreducible error
+
+**irreducible error** is the variance of the errors
+
+![function](chpt2_function.jpeg)

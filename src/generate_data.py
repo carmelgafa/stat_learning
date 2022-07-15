@@ -47,7 +47,7 @@ for x in np.arange(0,10+resolution, resolution):
 
     estimate = estimate.append({'x': x, 'y': y_average}, ignore_index=True)
 
-estimate.plot(x='x', y='y', kind='line', ax=ax, color='red', label='estimate')
+# estimate.plot(x='x', y='y', kind='line', ax=ax, color='red', label='estimate')
 
 
 neighborhood_estimate = pd.DataFrame(columns=['x', 'y'])
@@ -62,6 +62,6 @@ for x in np.arange(0,10+resolution, resolution):
     
     neighborhood_estimate = neighborhood_estimate.append({'x': x, 'y': y_neighborhood_average}, ignore_index=True)
     
-neighborhood_estimate.plot(x='x', y='y', kind='line', ax=ax, color='green', label='neighborhood estimate')
+# neighborhood_estimate.plot(x='x', y='y', kind='line', ax=ax, color='green', label='neighborhood estimate')
 
 plt.show()
