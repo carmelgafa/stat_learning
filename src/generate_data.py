@@ -49,6 +49,13 @@ for x in np.arange(0,10+resolution, resolution):
 
 # estimate.plot(x='x', y='y', kind='line', ax=ax, color='red', label='estimate')
 
+# estimate mean squared error
+
+estimate_error_squared = (estimate['y'] - function['y'])**2
+estimate_mse = np.mean(estimate_error_squared)
+print('Estimate MSE: ', estimate_mse)
+
+
 
 neighborhood_estimate = pd.DataFrame(columns=['x', 'y'])
 
@@ -63,5 +70,10 @@ for x in np.arange(0,10+resolution, resolution):
     neighborhood_estimate = neighborhood_estimate.append({'x': x, 'y': y_neighborhood_average}, ignore_index=True)
     
 # neighborhood_estimate.plot(x='x', y='y', kind='line', ax=ax, color='green', label='neighborhood estimate')
+
+neighborhood_error_squared = (neighborhood_estimate['y'] - function['y'])**2
+neighborhood_mse = np.mean(neighborhood_error_squared)
+print('Neighborhood MSE: ', neighborhood_mse)
+
 
 plt.show()
