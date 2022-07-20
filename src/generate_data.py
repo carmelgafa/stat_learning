@@ -1,3 +1,4 @@
+from operator import ne
 from turtle import color
 import numpy as np
 import matplotlib.pyplot as plt
@@ -60,6 +61,21 @@ def average_estimate(points):
     return average_estimate
 
 
+def neighborhood_estimate(points, window):
+
+    neighborhood_estimate = pd.DataFrame(columns=['x', 'y'])
+
+    for x in points['x']:
+
+        y_points = points[(points['x'] > x - window) & (points['x'] < x + window)]
+
+        y_neighborhood_average = np.mean(y_points['y'])
+        
+        neighborhood_estimate = neighborhood_estimate.append({'x': x, 'y': y_neighborhood_average}, ignore_index=True)
+      
+    return neighborhood_estimate
+
+
 if __name__=='__main__':
 
     # func = lambda x: -(np.square(x) - (10*x))
@@ -81,6 +97,10 @@ if __name__=='__main__':
 
     average_estimate = average_estimate(filtered_points)
 
+    window = resolution*5
+    
+    neighborhood_estimate = neighborhood_estimate(filtered_points, window)
+
     
     fig,ax = plt.subplots(1,1)
 
@@ -89,4 +109,6 @@ if __name__=='__main__':
     filtered_points.plot(x='x', y='y', kind='scatter', ax=ax, color='gainsboro', label='points')
 
     average_estimate.plot(x='x', y='y', kind='line', ax=ax, color='red', label='estimate')
+    
+    neighborhood_estimate.plot(x='x', y='y', kind='line', ax=ax, color='orange', label='estimate')
     plt.show()
