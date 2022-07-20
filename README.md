@@ -12,3 +12,4 @@ https://www.quora.com/Im-about-to-finish-reading-An-Introduction-to-Statistical-
 http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/sphilip/pear.html
 https://pythonprogramminglanguage.com/how-is-the-k-nearest-neighbor-algorithm-different-from-k-means-clustering/
 
+[Worked Solution](https://github.com/hardikkamboj/An-Introduction-to-Statistical-Learning)
