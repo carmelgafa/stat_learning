@@ -3,9 +3,40 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+def generate_data(func, max_random_points=20, min_point=0, max_point=10, resolution=0.05, error_threshold=2):
+
+    print("Generating data...")
+
+    points = pd.DataFrame(columns=['x', 'y'])
+
+    function = pd.DataFrame(columns=['x', 'y'])
+
+    for x in np.arange(min_point,max_point+resolution, resolution):
+
+        # get a random number between 1 and max_random_points
+        number_of_y_points = np.random.randint(1, max_random_points)
+
+        y = func(x)
+
+        function = function.append({'x': x, 'y': y}, ignore_index=True)
+
+        for _ in np.arange(0, number_of_y_points):
+
+            error = np.random.uniform(-error_threshold, error_threshold)
+
+            points = points.append({'x': x, 'y': y+error}, ignore_index=True)
+
+    # save function in csv
+    function.to_csv('function.csv', index=False)
+
+    # save points in csv
+    points.to_csv('points.csv', index=False)
 
 
-def execute(func):
+
+
+
+def execute(func, sample_mulpiplier):
 
     print("Generating data...")
 
@@ -46,7 +77,7 @@ def execute(func):
 
     estimate = pd.DataFrame(columns=['x', 'y'])
 
-    for x in np.arange(0,10+resolution, resolution):
+    for x in np.arange(0,10+resolution, resolution*sample_mulpiplier):
         # get y points for x
         y_points = points[points['x'] == x]
 
@@ -54,7 +85,7 @@ def execute(func):
 
         estimate = estimate.append({'x': x, 'y': y_average}, ignore_index=True)
 
-    # estimate.plot(x='x', y='y', kind='line', ax=ax, color='red', label='estimate')
+    estimate.plot(x='x', y='y', kind='line', ax=ax, color='red', label='estimate')
 
     # estimate mean squared error
 
@@ -66,7 +97,7 @@ def execute(func):
 
     neighborhood_estimate = pd.DataFrame(columns=['x', 'y'])
 
-    for x in np.arange(0,10+resolution, resolution):
+    for x in np.arange(0,10+resolution, resolution*sample_mulpiplier):
         
         window = 10*resolution
         
@@ -76,7 +107,7 @@ def execute(func):
         
         neighborhood_estimate = neighborhood_estimate.append({'x': x, 'y': y_neighborhood_average}, ignore_index=True)
         
-    # neighborhood_estimate.plot(x='x', y='y', kind='line', ax=ax, color='green', label='neighborhood estimate')
+    neighborhood_estimate.plot(x='x', y='y', kind='line', ax=ax, color='green', label='neighborhood estimate')
 
     neighborhood_error_squared = (neighborhood_estimate['y'] - function['y'])**2
     neighborhood_mse = np.mean(neighborhood_error_squared)
@@ -87,8 +118,11 @@ def execute(func):
 
 if __name__=='__main__':
 
-    func = lambda x: -(np.square(x) - (10*x))
+    # func = lambda x: -(np.square(x) - (10*x))
 
+    # func = lambda x:  (10*x)
 
+    func = lambda x:  (x**2) + 10
 
-    execute(func)
+    generate_data(func)
+ 
