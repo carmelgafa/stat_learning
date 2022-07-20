@@ -46,9 +46,18 @@ def extract_points(min_point=0, max_point=10, resolution=0.05):
 
     return filtered_points
 
+def average_estimate(points):
 
+    average_estimate = pd.DataFrame(columns=['x', 'y'])
 
+    for x in points['x']:
+        y_points = points[points['x'] == x]
 
+        y_average = np.mean(y_points['y'])
+
+        average_estimate = average_estimate.append({'x': x, 'y': y_average}, ignore_index=True)
+
+    return average_estimate
 
 def execute(func, sample_mulpiplier):
 
@@ -148,11 +157,15 @@ if __name__=='__main__':
     resolution = resolution*20
 
     filtered_points = extract_points(min_point, max_point, resolution)
+
+    average_estimate = average_estimate(filtered_points)
+
     
     fig,ax = plt.subplots(1,1)
 
     function.plot(x='x', y='y', ax=ax, kind='line', color='blue', label='function')
 
     filtered_points.plot(x='x', y='y', kind='scatter', ax=ax, color='gainsboro', label='points')
-    
+
+    average_estimate.plot(x='x', y='y', kind='line', ax=ax, color='red', label='estimate')
     plt.show()
